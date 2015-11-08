@@ -9,16 +9,19 @@ import flixel.util.FlxColor;
 import flixel.util.FlxMath;
 import flixel.FlxG;
 import openfl.Assets;
+import flash.Lib;
 
 class PlayState extends FlxState
 {
 	var myText:FlxText;
-	var wordFileContents:String;
 	var wordArray:Array<String>;
+	var up_mc:FlxSprite;
+	var down_mc:FlxSprite;
 	
 	override public function create():Void {
 		FlxG.camera.bgColor = 0xFFFFFF;
 		loadWordFile();
+		placeButtons();
 		createText();
 		super.create();
 	}
@@ -28,13 +31,29 @@ class PlayState extends FlxState
 	}
 
 	public function loadWordFile():Void {
-		wordFileContents = Assets.getText("assets/words/words.txt");
+		var wordFileContents = Assets.getText("assets/words/words.txt");
 		wordArray = wordFileContents.split("\n");
 		wordArray.pop(); // remove trailing whitespace line
 		wordArray.sort(randomize);
 		for (w in wordArray) {
-			w = w.substr(0, w.length-1)); // remove trailing invisible return char
+			w = w.substr(0, w.length-1); // remove trailing invisible return char
 		}
+	}
+
+	public function placeButtons():Void {
+		up_mc = new FlxSprite();
+		up_mc.loadGraphic("assets/images/arrow.png");
+		up_mc.x = 450;
+		up_mc.angle = 270;
+		up_mc.y = 500;
+		add(up_mc);
+
+		down_mc = new FlxSprite();
+		down_mc.loadGraphic("assets/images/arrow.png");
+		down_mc.x = 450;
+		down_mc.angle = 90;
+		down_mc.y = 600;
+		add(down_mc);
 	}
 
 	public function createText():Void {
