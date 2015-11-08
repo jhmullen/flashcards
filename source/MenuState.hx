@@ -3,6 +3,7 @@ package;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
+import flixel.util.FlxColor;
 import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 import flixel.util.FlxMath;
@@ -17,7 +18,11 @@ class MenuState extends FlxState
 	 */
 	override public function create():Void
 	{
-		add(new FlxText(0, 0, 100, "Hello World!"));
+		FlxG.camera.bgColor = 0xFFFFFFFF;
+		var myText:FlxText = new FlxText(0, 0, 300, "Hello World!");
+		myText.color = FlxColor.BLACK;
+		myText.size = 24;
+		add(myText);
 		super.create();
 	}
 	
