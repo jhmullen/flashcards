@@ -76,6 +76,19 @@ class PlayState extends FlxState
 	 */
 	override public function update():Void{
 		super.update();
-		myText.text = Std.string(Date.now());
+		if (FlxG.keys.pressed.UP) {
+			myText.text = "up";
+		}
+		if (FlxG.keys.pressed.DOWN) {
+			myText.text = "down";
+		}
+		if (FlxG.keys.pressed.LEFT) {
+			myText.text = "left";
+		}
+		if (FlxG.keys.pressed.RIGHT) {
+			myText.text = "right";
+		}
+
+
 	}	
 }
