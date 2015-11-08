@@ -5,6 +5,7 @@ import flixel.FlxSprite;
 import flixel.FlxState;
 import flixel.text.FlxText;
 import flixel.ui.FlxButton;
+import flixel.util.FlxColor;
 import flixel.util.FlxMath;
 import flixel.FlxG;
 
@@ -18,6 +19,12 @@ class PlayState extends FlxState
 	 */
 	override public function create():Void
 	{
+		FlxG.camera.bgColor = 0xFFFFFF;
+		var myText:FlxText = new FlxText(0, 0, 300, "Hello World!");
+		myText.systemFont = "Arial";
+		myText.color = FlxColor.BLACK;
+		myText.size = 24;
+		add(myText);
 		super.create();
 	}
 	
